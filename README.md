@@ -1,0 +1,2 @@
+# artix-niri
+Random dotfiles
