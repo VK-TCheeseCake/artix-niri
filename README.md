@@ -1,2 +1,1 @@
-# artix-niri
-Random dotfiles
+building
