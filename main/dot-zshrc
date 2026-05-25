@@ -1,0 +1,48 @@
+# -- Zinit bootstrap
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing ZDHARMA-CONTINUUM Zinit…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# -- Completion system
+autoload -Uz compinit
+compinit
+
+# -- Zinit plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light Aloxaf/fzf-tab
+
+# -- Zinit annexes
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+# -- Completion style
+zstyle ':completion:*' menu select
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD
+
+# -- General options
+setopt CORRECT
+setopt AUTO_CD
+setopt HIST_IGNORE_DUPS
+
+# -- History
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+# -- Keybinds
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# -- Starship (always last)
+eval "$(starship init zsh)"
