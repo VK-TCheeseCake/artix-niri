@@ -1,0 +1,8 @@
+// Because yes
+
+include "config.d/autostart.kdl"
+include "config.d/custom.kdl"
+include "config.d/hardware.kdl"
+include "config.d/keybinds.kdl"
+include "config.d/output.kdl"
+include "config.d/windowrules.kdl"
