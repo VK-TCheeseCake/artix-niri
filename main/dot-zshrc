@@ -1,3 +1,9 @@
+# --start sway lmfao
+if [[ -z "$WAYLAND_DISPLAY" &&  -z "$DISPLAY"  &&  "$XDG_VTNR" -eq 1 ]]; then
+#	exec dbus-run-session sway
+	exec dbus-run-session niri
+fi
+
 # -- Zinit bootstrap
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing ZDHARMA-CONTINUUM Zinit…%f"
